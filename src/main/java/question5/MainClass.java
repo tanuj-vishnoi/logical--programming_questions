@@ -17,9 +17,9 @@ public class MainClass {
 		bids.add(8); bids.add(7); bids.add(6); bids.add(9);
 		System.out.println(bids);
 		
-		FreeLancingPlatform freeLancing = new FreeLancingPlatform(numberOfProjects, projectId, bids);
+		FreeLancingPlatform freeLancing = new FreeLancingPlatform();
 		
-		System.out.println(freeLancing.minCost());
+		System.out.println(freeLancing.minCost(numberOfProjects, projectId, bids));
 
 	}
 

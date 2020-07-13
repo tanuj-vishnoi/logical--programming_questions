@@ -6,35 +6,34 @@ import java.util.Map;
 
 public class FreeLancingPlatform {
 
-	private Integer[] projectIds,bids;
-	private Map<Integer,Integer> totalMiniumCost;
-	private int numberOfProjects;
+	
 		
-	public FreeLancingPlatform(int numberOfProjects , List<Integer> projectIds, List<Integer> bids) {
-		this.numberOfProjects = numberOfProjects;
-		this.projectIds = new Integer[numberOfProjects];
+	
+	public int minCost(int numberOfProjects , List<Integer> projectIds, List<Integer> bids) {
+		Integer[] projects,bIds;
+		Map<Integer,Integer> totalMiniumCost;
+		int totalProjects;
+		totalProjects = numberOfProjects;
+		projects = new Integer[numberOfProjects];
 		for(int i =0; i<projectIds.size() ; i++) {
-			this.projectIds[i] = projectIds.get(i);
+			projects[i] = projectIds.get(i);
 		}
-		this.bids = new Integer[numberOfProjects];
+		bIds = new Integer[numberOfProjects];
 		for(int i =0; i<bids.size() ; i++) {
-			this.bids[i] = bids.get(i);
+			bIds[i] = bids.get(i);
 		}
 		totalMiniumCost = new HashMap<Integer,Integer>();
-	}
-	
-	public int minCost() {
-		for(int i = 0; i<projectIds.length; i++) {
-			if(!totalMiniumCost.containsKey(projectIds[i])) {
-				totalMiniumCost.put(projectIds[i], bids[i]);
+		for(int i = 0; i<projects.length; i++) {
+			if(!totalMiniumCost.containsKey(projects[i])) {
+				totalMiniumCost.put(projects[i], bIds[i]);
 			}else {
-				int temp = totalMiniumCost.get(projectIds[i]);
-				if(temp > bids[i]) {
-					totalMiniumCost.put(projectIds[i], bids[i]);
+				int temp = totalMiniumCost.get(projects[i]);
+				if(temp > bIds[i]) {
+					totalMiniumCost.put(projects[i], bIds[i]);
 				}
 			}
 		}
-		if(totalMiniumCost.size()!=numberOfProjects)
+		if(totalMiniumCost.size()!=totalProjects)
 			return -1;
 		else {
 			int sum = 0;
