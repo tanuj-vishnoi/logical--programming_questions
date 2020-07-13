@@ -1,18 +1,25 @@
 package question5;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FreeLancingPlatform {
 
-	private int[] projectIds,bids;
+	private Integer[] projectIds,bids;
 	private Map<Integer,Integer> totalMiniumCost;
 	private int numberOfProjects;
 		
-	public FreeLancingPlatform(int numberOfProjects , int[] projectIds, int[] bids) {
-		this.projectIds = projectIds;
-		this.bids = bids;
+	public FreeLancingPlatform(int numberOfProjects , List<Integer> projectIds, List<Integer> bids) {
 		this.numberOfProjects = numberOfProjects;
+		this.projectIds = new Integer[numberOfProjects];
+		for(int i =0; i<projectIds.size() ; i++) {
+			this.projectIds[i] = projectIds.get(i);
+		}
+		this.bids = new Integer[numberOfProjects];
+		for(int i =0; i<bids.size() ; i++) {
+			this.bids[i] = bids.get(i);
+		}
 		totalMiniumCost = new HashMap<Integer,Integer>();
 	}
 	

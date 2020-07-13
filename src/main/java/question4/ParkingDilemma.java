@@ -2,27 +2,29 @@ package question4;
 
 import java.awt.CardLayout;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ParkingDilemma {
 
-	private int[] carsParkingIndex;
-	private int coverSize;
+	private List<Long> cars;
+	private int k;
 	
-	public ParkingDilemma(int[] carsParkingIndex, int coverSize) {
-		this.carsParkingIndex = carsParkingIndex;
-		this.coverSize = coverSize;
+	public ParkingDilemma(List<Long> cars, int k) {
+		this.cars = cars;
+		this.k = k;
 	}
 	
 	public int carParkingRoof() {
-		Arrays.sort(carsParkingIndex);
-		Set<Integer> coverRequirement = new HashSet<Integer>();
-		int cars = carsParkingIndex.length;
-		for(int i=0;i< cars; i++) {
-			int sum = 0;
+		Collections.sort(cars);
+		Set<Long> coverRequirement = new HashSet<Long>();
+		int carsTotal = cars.size();
+		for(int i=0;i< carsTotal; i++) {
+			long sum = 0;
 			try {
-				sum = carsParkingIndex[i + coverSize-1] - carsParkingIndex[i] + 1 ;
+				sum = cars.get(i + k - 1) - cars.get(i) + 1 ;
 				coverRequirement.add(sum);
 			}catch(ArrayIndexOutOfBoundsException e) {
 				break;

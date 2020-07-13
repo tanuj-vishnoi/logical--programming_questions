@@ -1,6 +1,8 @@
 package question4;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class MainClass {
 
@@ -10,13 +12,14 @@ public class MainClass {
 		
 		Scanner scanner = new Scanner(System.in);
 		int totalInput = scanner.nextInt();
-		int[] cars =  new int[totalInput];
+		long[] cars =  new long[totalInput];
 		for(int i=0; i <=totalInput-1; i++) {
-			int value = scanner.nextInt();
+			long value = scanner.nextLong();
 			cars[i] = value;
 		}
 		int reqCoverSize = scanner.nextInt();
-		ParkingDilemma pD = new ParkingDilemma(cars, reqCoverSize);
-		System.out.println(pD.carParkingRoof());
+		;
+		//ParkingDilemma pD = new ParkingDilemma(Arrays.stream(cars).boxed().collect(Collectors.toList()), reqCoverSize);
+		//System.out.println(pD.carParkingRoof());
 	}
 }
