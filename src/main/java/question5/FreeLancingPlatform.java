@@ -14,7 +14,7 @@ public class FreeLancingPlatform {
 		Map<Integer,Integer> totalMiniumCost;
 		int totalProjects;
 		totalProjects = numberOfProjects;
-		projects = new Integer[numberOfProjects];
+		projects = new Integer[projectIds.size()];
 		for(int i =0; i<projectIds.size() ; i++) {
 			projects[i] = projectIds.get(i);
 		}

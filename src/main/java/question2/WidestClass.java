@@ -1,53 +1,41 @@
 package question2;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class WidestClass {
 	
-	private int[] roadblock, start, end;
-
-	public WidestClass(int lengthOfRoad, int[] start, int[] end) {
-		roadblock = new int[lengthOfRoad];
-		this.start = start;
-		this.end = end;
-	}
-	
-	public int widestGap() {
-		setDefaultValue();
-		for(int i=0 ; i < start.length; i++) {
-			roadblock[start[i]-1] = 1;
-			for(int j = start[i] ; j < end[i]; j++)
-				roadblock[j] = 1;
-			
+	public int widestGap(int lengthOfRoad, List<Integer> start, List<Integer> end) {
+		int maxGap = 0;
+		Set<Integer> roadBlocks = new HashSet<Integer>();
+		for(int i =1; i<=lengthOfRoad ;i++) {
+			roadBlocks.add(i);
 		}
-		printRoad();
-		return getMaxConsecutivegaps(roadblock);
-	}
-	
-	public int getMaxConsecutivegaps(int[] road) {
-		int count = 0, maxCount = 0;
-		for(int i=0; i < road.length ; i++) {
-			if(road[i]==0) {
-				count++;
-				continue;
-			}else {
-				if(count> maxCount) {
-					maxCount = count;
-					count = 0;
-				}
+		for(int i=0;i< start.size() ; i++) {
+			int startingBlock = start.get(i);
+			int endingBlock = end.get(i);
+			for(int j = startingBlock; j<=endingBlock ; j++) {
+				roadBlocks.remove(j);
 			}
 		}
-		return maxCount;
-	}
-	
-	private void setDefaultValue() {
-		for(int i=0;i < roadblock.length; i++) {
-			roadblock[i] = 0;
+		Integer[] emptyBlocks = roadBlocks.toArray(new Integer[roadBlocks.size()]);
+		if(emptyBlocks.length == 0)
+			return maxGap;
+		if(emptyBlocks.length == 1)
+			return 1;
+		
+		int diff  = 1 ; 
+		for(int i = 0; i < emptyBlocks.length -1 ; i ++) {
+			if(emptyBlocks[i]+1 == emptyBlocks[i+1]) {
+				diff++;
+				continue;
+			}
+			if(diff > maxGap) {
+				maxGap = diff;
+				diff = 1;
+			}
 		}
-	}
-	
-	private void printRoad() {
-		for(int i=0 ; i < roadblock.length; i++) {
-			System.out.print(roadblock[i]+" ");
-		}
-		System.out.println();
+		return maxGap;
 	}
 }

@@ -5,35 +5,30 @@ import java.util.List;
 
 public class TableOfContent {
 	
-	private String titlePattern = "# ";
-	private String subHeadingPattern = "## ";
 	
-	private String[] lines;
-	private List<String> tableOfContents;
-	
-	public TableOfContent(String[] lines) {
-		this.lines = lines;
-		tableOfContents = new ArrayList<String>();
-	}
-	
-	
-	public String[] tableOfContents() {
+	public List<String>  tableOfContents(List<String> lines) {
+		String[] aLines = lines.toArray(new String[lines.size()]);
+		String titlePattern = "# ";
+		String subHeadingPattern = "## ";
+		List<String> tableOfContents = new ArrayList<String>();
+		System.out.println(aLines.length);
 		int headingCount = 0 , subHeadingCount = 0;
-		for(int i=0; i< lines.length ;i ++) {
-			if(lines[i].startsWith(titlePattern)) {
+		for(int i=0; i< aLines.length ;i ++) {
+			if(aLines[i].startsWith(titlePattern)) {
 				headingCount++;
 				subHeadingCount = 0;
-				tableOfContents.add(headingCount+". "+lines[i].replace(titlePattern, ""));
+				tableOfContents.add(headingCount+". "+aLines[i].replace(titlePattern, ""));
 			}else {
-				if(lines[i].startsWith(subHeadingPattern)) {
+				if(aLines[i].startsWith(subHeadingPattern)) {
 					subHeadingCount++;
-					tableOfContents.add(headingCount+"."+subHeadingCount+". "+lines[i].replace(subHeadingPattern, ""));
+					tableOfContents.add(headingCount+"."+subHeadingCount+". "+aLines[i].replace(subHeadingPattern, ""));
 				}
 			}
 			
 		}
 		
-		return tableOfContents.toArray(new String[tableOfContents.size()]);
+		//return tableOfContents.toArray(new String[tableOfContents.size()]);
+		return tableOfContents;
 	}
 	
 	

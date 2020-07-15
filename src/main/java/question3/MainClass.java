@@ -7,30 +7,19 @@ import java.util.Scanner;
 public class MainClass {
 
 	public static void main(String...a) {
-//		String[] lines = new String[10];
-//		lines[0] = "# Games";
-//		lines[1] = "## Board";
-//		lines[2] = "## Zero Sum";
-//		lines[3] = "## Computer";
-//		lines[4] = "## MultiPlayer";
-//		lines[5] = "# Startergies";
-//		lines[6] = "## Greedy";
-//		lines[7] = "## Tree pruning";
-//		lines[8] = "## Others";
-//		lines[9] = "# Summary";
+		List<String> lines = new ArrayList<String>();
+		lines.add("# Games");
+		lines.add("## Board");
+		lines.add("## Zero Sum");
+		lines.add("## Computer");
+		lines.add("## MultiPlayer");
+		lines.add("# Startergies");
+		lines.add("## Greedy");
+		lines.add("## Tree pruning");
+		lines.add("## Others");
+		lines.add("# Summary");
 		
-		
-		Scanner scanner = new Scanner(System.in);
-		int totalInput = scanner.nextInt();
-		String[] lines =  new String[totalInput];
-		for(int i=0; i <=totalInput-1; i++) {
-			String value = scanner.next();
-			lines[i] = value;
-		}
-		TableOfContent tableOfContent = new TableOfContent(lines);
-		String[] tableContent  = tableOfContent.tableOfContents();
-		for(String s: tableContent) {
-			System.out.println(s);
-		}
+		TableOfContent tableOfContent = new TableOfContent();
+		System.out.println(tableOfContent.tableOfContents(lines));
 	}
 }
