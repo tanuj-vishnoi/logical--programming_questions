@@ -19,14 +19,19 @@ public class WidestClass {
 				sroadblock[j] = 1;
 
 		}
-		int count = 0, maxCount = 0; int startingIndex = 0;
+		int count = 0, maxCount = 0; int startingIndex = 0 ; int endIndex = sroadblock.length;
 		for(int i =1 ;i<sroadblock.length; i++) {
 			if(sroadblock[i]!=0) {
 				startingIndex = i;
 				break;
 			}
 		}
-		for(int i=startingIndex; i < sroadblock.length ; i++) {
+		for(int i =1 ;i<sroadblock.length; i++) {
+			if(sroadblock[i]!=0) {
+				endIndex = i;
+			}
+		}
+		for(int i=startingIndex; i < endIndex ; i++) {
 			//System.out.println(i+"->"+sroadblock[i]);
 			if(sroadblock[i]==0) {
 				count++;
