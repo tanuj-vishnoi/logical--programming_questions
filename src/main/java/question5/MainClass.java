@@ -14,7 +14,7 @@ public class MainClass {
 		projectId.add(25); projectId.add(32); projectId.add(44); projectId.add(51);projectId.add(63);
 		System.out.println(projectId);
 		List<Integer> bids = new ArrayList<Integer>();
-		bids.add(8); bids.add(7); bids.add(6); bids.add(9);
+		bids.add(8); bids.add(7); bids.add(6); bids.add(9);bids.add(10);
 		System.out.println(bids);
 		
 		FreeLancingPlatform freeLancing = new FreeLancingPlatform();
