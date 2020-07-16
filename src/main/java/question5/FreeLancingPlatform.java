@@ -7,7 +7,7 @@ import java.util.Map;
 public class FreeLancingPlatform {
 
 
-	public int minCost(int numberOfProjects , List<Integer> projectIds, List<Integer> bids) {
+	public long minCost(int numberOfProjects , List<Integer> projectIds, List<Integer> bids) {
 		Map<Integer,Integer> utotalMiniumCost = new  HashMap<Integer,Integer>();
 		Integer[] uprojectIds = projectIds.toArray(new Integer[projectIds.size()]);
 		Integer[] ubids = bids.toArray(new Integer[bids.size()]);
@@ -24,7 +24,7 @@ public class FreeLancingPlatform {
 		if(utotalMiniumCost.size()!=numberOfProjects)
 			return -1;
 		else {
-			int sum = 0;
+			long sum = 0;
 			for(int i : utotalMiniumCost.values()) {
 				sum = sum +i;
 			}
